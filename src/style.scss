@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins|Rubik&display=swap");
+@import "reset.scss";
 
 body {
   font-family: Poppins;
@@ -9,10 +10,10 @@ body {
     display: flex;
 
     .sensor {
-      min-width: 180px;
       .name {
         font-size: 20px;
         color: #ddd;
+        margin-bottom: 5px;
       }
 
       .temperature {
@@ -40,8 +41,27 @@ body {
   }
 
   .box {
-    margin: 10px;
+    margin: 10px 0 0 10px;
     padding: 20px;
     background-color: #303030;
+  }
+
+  @media (min-width: 500px) {
+    .sensors {
+      .sensor {
+        min-width: 180px;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    .sensors {
+      display: block;
+    }
+
+    .box {
+      margin: 10px 0 0 0;
+      padding: 20px;
+    }
   }
 }
