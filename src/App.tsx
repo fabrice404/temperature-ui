@@ -6,24 +6,23 @@ import * as types from './types';
 const App = () => {
   const [sensors, setSensors] = useState<types.Sensor[]>([]);
 
-  const loadSensors = () => {
-    fetch('http://meteo-api.lamant.io/sensors')
-      .then(response => response.json())
-      .then(response => {
-        const s: types.Sensor[] = [];
-        Object.keys(response)
-          .forEach(key => {
-            s.push({
-              name: key,
-              ...response[key],
-            });
-          });
-        setSensors(s);
-      });
-    setTimeout(() => loadSensors(), 60000);
-  };
-
   useEffect(() => {
+    const loadSensors = () => {
+      fetch('http://meteo-api.lamant.io/sensors')
+        .then(response => response.json())
+        .then(response => {
+          const s: types.Sensor[] = [];
+          Object.keys(response)
+            .forEach(key => {
+              s.push({
+                name: key,
+                ...response[key],
+              });
+            });
+          setSensors(s);
+        });
+      setTimeout(() => loadSensors(), 60000);
+    };
     loadSensors();
   }, []);
 
