@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - 10
+branches:
+  only:
+    - master
+before_install:
+  - npm config set "@fortawesome:registry" https://npm.fontawesome.com/
+  - npm config set "//npm.fontawesome.com/:_authToken" ${FONTAWESOME_NPM_AUTH_TOKEN}
+script:
+  - yarn build
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: node deploy.js
+  on:
+    branch: master
