@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.22",
+    "@fortawesome/free-solid-svg-icons": "^5.10.2",
+    "@fortawesome/pro-regular-svg-icons": "^5.10.2",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.2",
     "@types/react": "^16.9.2",
@@ -12,11 +16,26 @@
     "react-scripts": "^3.1.1",
     "typescript": "^3.6.2"
   },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb-typescript": "^4.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "node-sass-chokidar": "^1.3.5",
+    "node-ssh": "^6.0.0",
+    "npm-run-all": "^4.1.5"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build-css": "node-sass src/style.scss public/style.css",
+    "watch-css": "node-sass-chokidar src/style.scss public/style.css --watch",
+    "start-js": "react-scripts start",
+    "build-js": "react-scripts build",
+    "start": "npm-run-all --aggregate-output --parallel start-js watch-css",
+    "build": "npm run build-css && npm run build-js",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./"
   },
   "eslintConfig": {
     "extends": "react-app"

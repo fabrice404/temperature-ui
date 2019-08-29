@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins|Rubik&display=swap");
+
+body {
+  font-family: Poppins;
+  background-color: #222;
+  color: #fff;
+
+  .sensors {
+    display: flex;
+
+    .sensor {
+      min-width: 180px;
+      .name {
+        font-size: 20px;
+        color: #ddd;
+      }
+
+      .temperature {
+        font-family: Rubik;
+        display: flex;
+        align-items: flex-end;
+
+        .number {
+          font-size: 48px;
+          line-height: 48px;
+        }
+
+        .fractional {
+          vertical-align: bottom;
+          font-size: 24px;
+          line-height: 24px;
+          padding-bottom: 4px;
+        }
+      }
+
+      .thermometer {
+        margin-right: 15px;
+      }
+    }
+  }
+
+  .box {
+    margin: 10px;
+    padding: 20px;
+    background-color: #303030;
+  }
+}
